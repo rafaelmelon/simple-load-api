@@ -76,7 +76,7 @@ var App = function (_React$Component) {
 
     var appUrl = 'http://jsonplaceholder.typicode.com';
     _this2.userList = appUrl + '/users';
-    _this2.userAlbumList = appUrl + '/albums';
+    _this2.userAlbumList = appUrl + '/albums?userId=';
 
     _this2.getAlbumClick = _this2.getAlbumClick.bind(_this2);
     return _this2;
@@ -104,10 +104,10 @@ var App = function (_React$Component) {
     }
   }, {
     key: 'getAlbumClick',
-    value: function getAlbumClick() {
+    value: function getAlbumClick(id) {
       var _this4 = this;
 
-      this.api(this.userAlbumList).then(function (response) {
+      this.api(this.userAlbumList + id).then(function (response) {
         _this4.setState({ album: response });
       });
     }
@@ -140,7 +140,9 @@ var App = function (_React$Component) {
             fileName: _jsxFileName,
             lineNumber: 60
           }
-        }, user.name), _react2.default.createElement('button', { onClick: _this5.getAlbumClick, __source: {
+        }, user.name), _react2.default.createElement('button', { onClick: function onClick() {
+            return _this5.getAlbumClick(user.id);
+          }, __source: {
             fileName: _jsxFileName,
             lineNumber: 61
           }
@@ -155,7 +157,8 @@ var App = function (_React$Component) {
           lineNumber: 67
         }
       }, this.state.album.map(function (album) {
-        return _react2.default.createElement('li', { key: album.id, __source: {
+        return _react2.default.createElement('li', {
+          __source: {
             fileName: _jsxFileName,
             lineNumber: 69
           }
@@ -164,7 +167,7 @@ var App = function (_React$Component) {
             fileName: _jsxFileName,
             lineNumber: 70
           }
-        }, album.title));
+        }, album.userId, ' ', album.title));
       }))));
     }
   }]);

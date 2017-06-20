@@ -17,12 +17,12 @@ class App extends React.Component {
     super(props);
     this.state = {
       user: [],
-      album: []
+      album: [],
     };
 
     const appUrl = 'http://jsonplaceholder.typicode.com';
     this.userList = `${appUrl}/users`;
-    this.userAlbumList = `${appUrl}/albums`;
+    this.userAlbumList = `${appUrl}/albums?userId=`;
 
     this.getAlbumClick = this.getAlbumClick.bind(this);
   }
@@ -43,8 +43,8 @@ class App extends React.Component {
     });
   }
 
-  getAlbumClick(){
-    this.api(this.userAlbumList).then((response)=> {
+  getAlbumClick(id){
+    this.api(this.userAlbumList + id).then((response)=> {
       this.setState({ album: response });
     });
   }
@@ -58,7 +58,7 @@ class App extends React.Component {
             {this.state.user.map(user =>
               <li key={ user.id }>
                 <span>{ user.name }</span>
-                <button onClick={ this.getAlbumClick }>Display album</button>
+                <button onClick={() => this.getAlbumClick(user.id)}>Display album</button>
               </li>
             )}
           </ul>
@@ -66,8 +66,8 @@ class App extends React.Component {
         <div className="show-all">
           <ul>
             {this.state.album.map(album =>
-              <li key={ album.id }>
-                <span>{ album.title }</span>
+              <li>
+                <span>{ album.userId } { album.title }</span>
               </li>
             )}
           </ul>
