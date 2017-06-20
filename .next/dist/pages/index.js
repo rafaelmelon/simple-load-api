@@ -117,7 +117,7 @@ var App = function (_React$Component) {
           fileName: _jsxFileName,
           lineNumber: 56
         }
-      }, this.state.user.length > 0 ? "User loaded" : this.getUser(), _react2.default.createElement('div', { className: 'show-user', __source: {
+      }, this.state.user.length > 0 ? "" : this.getUser(), _react2.default.createElement('div', { className: 'show-user', style: { float: 'left', width: '33%' }, __source: {
           fileName: _jsxFileName,
           lineNumber: 58
         }
@@ -131,19 +131,18 @@ var App = function (_React$Component) {
             fileName: _jsxFileName,
             lineNumber: 61
           }
-        }, _react2.default.createElement('span', {
-          __source: {
+        }, _react2.default.createElement('span', { style: { display: 'block', margin: '5px 0' }, __source: {
             fileName: _jsxFileName,
             lineNumber: 62
           }
-        }, user.name), _react2.default.createElement('button', { onClick: function onClick() {
+        }, user.name), _react2.default.createElement('button', { style: { background: 'cyan', border: '1px solid blue' }, onClick: function onClick() {
             return _this5.getAlbumClick(user.id);
           }, __source: {
             fileName: _jsxFileName,
             lineNumber: 63
           }
         }, 'Display album'));
-      }))), _react2.default.createElement('div', { className: 'show-album', __source: {
+      }))), _react2.default.createElement('div', { className: 'show-album', style: { float: 'left', width: '33%' }, __source: {
           fileName: _jsxFileName,
           lineNumber: 68
         }
@@ -158,29 +157,28 @@ var App = function (_React$Component) {
             fileName: _jsxFileName,
             lineNumber: 71
           }
-        }, _react2.default.createElement('span', {
-          __source: {
+        }, _react2.default.createElement('span', { style: { display: 'block', margin: '5px 0' }, __source: {
             fileName: _jsxFileName,
             lineNumber: 72
           }
-        }, album.userId, ' ', album.title), _react2.default.createElement('button', { onClick: function onClick() {
+        }, album.userId, ' - ', album.title), _react2.default.createElement('button', { style: { background: 'yellow', border: '1px solid orange' }, onClick: function onClick() {
             return _this5.getPhotoClick(album.id);
           }, __source: {
             fileName: _jsxFileName,
             lineNumber: 73
           }
         }, 'Display Photos'));
-      })), _react2.default.createElement('div', { className: 'show-photo', __source: {
+      }))), _react2.default.createElement('div', { className: 'show-photo', style: { float: 'left', width: '33%' }, __source: {
           fileName: _jsxFileName,
-          lineNumber: 77
+          lineNumber: 78
         }
       }, this.state.photo.map(function (photo) {
-        return _react2.default.createElement('img', { src: photo.url, __source: {
+        return _react2.default.createElement('img', { style: { width: '20%' }, src: photo.url, __source: {
             fileName: _jsxFileName,
-            lineNumber: 78
+            lineNumber: 79
           }
         });
-      }))));
+      })));
     }
   }]);
 

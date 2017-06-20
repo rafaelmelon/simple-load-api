@@ -54,29 +54,29 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        { this.state.user.length > 0  ? "User loaded" : this.getUser() }
-        <div className="show-user">
+        { this.state.user.length > 0  ? "" : this.getUser() }
+        <div className="show-user" style={{ float:'left', width:'33%' }} >
           <ul>
             {this.state.user.map(user =>
               <li key={ user.id }>
-                <span>{ user.name }</span>
-                <button onClick={() => this.getAlbumClick(user.id)}>Display album</button>
+                <span style={{ display:'block', margin: '5px 0' }}>{ user.name }</span>
+                <button style={{ background:'cyan', border: '1px solid blue' }} onClick={() => this.getAlbumClick(user.id)}>Display album</button>
               </li>
             )}
           </ul>
         </div>
-        <div className="show-album">
+        <div className="show-album" style={{ float:'left', width:'33%' }} >
           <ul>
             {this.state.album.map(album =>
               <li>
-                <span>{ album.userId } { album.title }</span>
-                <button onClick={() => this.getPhotoClick(album.id)}>Display Photos</button>
+                <span style={{ display:'block', margin: '5px 0' }}>{ album.userId } - { album.title }</span>
+                <button style={{ background:'yellow', border: '1px solid orange' }} onClick={() => this.getPhotoClick(album.id)}>Display Photos</button>
               </li>
             )}
           </ul>
-          <div className="show-photo">
-            {this.state.photo.map(photo => <img src={ photo.url } />)}
-          </div>
+        </div>
+        <div className="show-photo" style={{ float:'left', width:'33%' }} >
+          {this.state.photo.map(photo => <img style={{ width:'20%' }} src={ photo.url } />)}
         </div>
       </div>
     );
