@@ -1,0 +1,27 @@
+{
+  "name": "test-caseonit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafaelmelon/test-caseonit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rafaelmelon/test-caseonit/issues"
+  },
+  "homepage": "https://github.com/rafaelmelon/test-caseonit#readme",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "next": "^3.0.0-beta16",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
+}
