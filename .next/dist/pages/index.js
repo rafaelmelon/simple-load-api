@@ -42,24 +42,8 @@ var _axios2 = _interopRequireDefault(_axios);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _jsxFileName = '/Users/rafaelmelon/Sites/test-caseonit/pages/index.js?entry',
-    _this = undefined;
-
+var _jsxFileName = '/Users/rafaelmelon/Sites/test-caseonit/pages/index.js?entry';
 /* jshint esversion:6 */
-
-var MenuItem = function MenuItem(_ref) {
-  var title = _ref.title;
-  return _react2.default.createElement('li', {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 8
-    }
-  }, title, _react2.default.createElement('button', { onClick: _this.getAlbumClick, __source: {
-      fileName: _jsxFileName,
-      lineNumber: 10
-    }
-  }, 'Display album'));
-};
 
 var App = function (_React$Component) {
   (0, _inherits3.default)(App, _React$Component);
@@ -67,19 +51,22 @@ var App = function (_React$Component) {
   function App(props) {
     (0, _classCallCheck3.default)(this, App);
 
-    var _this2 = (0, _possibleConstructorReturn3.default)(this, (App.__proto__ || (0, _getPrototypeOf2.default)(App)).call(this, props));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (App.__proto__ || (0, _getPrototypeOf2.default)(App)).call(this, props));
 
-    _this2.state = {
+    _this.state = {
       user: [],
-      album: []
+      album: [],
+      photo: []
     };
 
     var appUrl = 'http://jsonplaceholder.typicode.com';
-    _this2.userList = appUrl + '/users';
-    _this2.userAlbumList = appUrl + '/albums?userId=';
+    _this.userList = appUrl + '/users';
+    _this.userAlbumList = appUrl + '/albums?userId=';
+    _this.userPhotoList = appUrl + '/photos?albumId=';
 
-    _this2.getAlbumClick = _this2.getAlbumClick.bind(_this2);
-    return _this2;
+    _this.getAlbumClick = _this.getAlbumClick.bind(_this);
+    _this.getPhotoClick = _this.getPhotoClick.bind(_this);
+    return _this;
   }
 
   (0, _createClass3.default)(App, [{
@@ -96,19 +83,28 @@ var App = function (_React$Component) {
   }, {
     key: 'getUser',
     value: function getUser() {
-      var _this3 = this;
+      var _this2 = this;
 
       this.api(this.userList).then(function (response) {
-        _this3.setState({ user: response });
+        _this2.setState({ user: response });
       });
     }
   }, {
     key: 'getAlbumClick',
     value: function getAlbumClick(id) {
-      var _this4 = this;
+      var _this3 = this;
 
       this.api(this.userAlbumList + id).then(function (response) {
-        _this4.setState({ album: response });
+        _this3.setState({ album: response });
+      });
+    }
+  }, {
+    key: 'getPhotoClick',
+    value: function getPhotoClick(id) {
+      var _this4 = this;
+
+      this.api(this.userPhotoList + id).then(function (response) {
+        _this4.setState({ photo: response });
       });
     }
   }, {
@@ -119,55 +115,71 @@ var App = function (_React$Component) {
       return _react2.default.createElement('div', {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 54
+          lineNumber: 56
         }
       }, this.state.user.length > 0 ? "User loaded" : this.getUser(), _react2.default.createElement('div', { className: 'show-user', __source: {
           fileName: _jsxFileName,
-          lineNumber: 56
+          lineNumber: 58
         }
       }, _react2.default.createElement('ul', {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 57
+          lineNumber: 59
         }
       }, this.state.user.map(function (user) {
         return _react2.default.createElement('li', { key: user.id, __source: {
             fileName: _jsxFileName,
-            lineNumber: 59
+            lineNumber: 61
           }
         }, _react2.default.createElement('span', {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 60
+            lineNumber: 62
           }
         }, user.name), _react2.default.createElement('button', { onClick: function onClick() {
             return _this5.getAlbumClick(user.id);
           }, __source: {
             fileName: _jsxFileName,
-            lineNumber: 61
+            lineNumber: 63
           }
         }, 'Display album'));
-      }))), _react2.default.createElement('div', { className: 'show-all', __source: {
+      }))), _react2.default.createElement('div', { className: 'show-album', __source: {
           fileName: _jsxFileName,
-          lineNumber: 66
+          lineNumber: 68
         }
       }, _react2.default.createElement('ul', {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 67
+          lineNumber: 69
         }
       }, this.state.album.map(function (album) {
         return _react2.default.createElement('li', {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 69
+            lineNumber: 71
           }
         }, _react2.default.createElement('span', {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 70
+            lineNumber: 72
           }
-        }, album.userId, ' ', album.title));
+        }, album.userId, ' ', album.title), _react2.default.createElement('button', { onClick: function onClick() {
+            return _this5.getPhotoClick(album.id);
+          }, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 73
+          }
+        }, 'Display Photos'));
+      })), _react2.default.createElement('div', { className: 'show-photo', __source: {
+          fileName: _jsxFileName,
+          lineNumber: 77
+        }
+      }, this.state.photo.map(function (photo) {
+        return _react2.default.createElement('img', { src: photo.url, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 78
+          }
+        });
       }))));
     }
   }]);

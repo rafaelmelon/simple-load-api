@@ -4,13 +4,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-const MenuItem = ( { title } ) => (
-  <li>
-    { title }
-    <button onClick={this.getAlbumClick}>Display album</button>
-  </li>
-);
-
 class App extends React.Component {
 
   constructor(props) {
@@ -18,13 +11,16 @@ class App extends React.Component {
     this.state = {
       user: [],
       album: [],
+      photo: []
     };
 
     const appUrl = 'http://jsonplaceholder.typicode.com';
     this.userList = `${appUrl}/users`;
     this.userAlbumList = `${appUrl}/albums?userId=`;
+    this.userPhotoList = `${appUrl}/photos?albumId=`;
 
     this.getAlbumClick = this.getAlbumClick.bind(this);
+    this.getPhotoClick = this.getPhotoClick.bind(this);
   }
 
   api(endPoint) {
@@ -49,6 +45,12 @@ class App extends React.Component {
     });
   }
 
+  getPhotoClick(id){
+    this.api(this.userPhotoList + id).then((response)=> {
+      this.setState({ photo: response });
+    });
+  }
+
   render() {
     return (
       <div>
@@ -63,14 +65,18 @@ class App extends React.Component {
             )}
           </ul>
         </div>
-        <div className="show-all">
+        <div className="show-album">
           <ul>
             {this.state.album.map(album =>
               <li>
                 <span>{ album.userId } { album.title }</span>
+                <button onClick={() => this.getPhotoClick(album.id)}>Display Photos</button>
               </li>
             )}
           </ul>
+          <div className="show-photo">
+            {this.state.photo.map(photo => <img src={ photo.url } />)}
+          </div>
         </div>
       </div>
     );
