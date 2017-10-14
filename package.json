@@ -1,8 +1,14 @@
 {
-  "name": "test-caseonit",
+  "name": "simple-load-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple loading of a gallery from an API",
   "main": "index.js",
+  "author": "Rafael Melón <info@rafaelmelon.es> (http://rafaelmelon.es/)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rafaelmelon/simple-load-api.git"
+  },
   "scripts": {
     "dev": "next",
     "build": "next build",
